@@ -2,6 +2,8 @@
 
 import {useRef} from "react";
 
+const colors = ["red","green","blue","purple","yellow"];
+
 /**
  * Like state, refs are retained by React between re-renders.
  * However, setting state re-renders a component. Changing a ref does not!
@@ -10,12 +12,17 @@ import {useRef} from "react";
  */
 export default function RefHook() {
     const ref = useRef(0);
+    const domNode = useRef(null);//access to the DOM elements managed by React
 
     return (
         <>
-            <h2>Ref Hook experiment!</h2>
+            <h2 ref={domNode}>Ref Hook experiment!</h2>
             <h3>{ref.current}</h3>
-            <button onClick={()=>ref.current+=1}>click me</button>
+            <button onClick={()=>handleClick(ref,domNode)}>click me</button>
         </>
     );
+}
+function handleClick(ref,domNode){
+    ref.current +=1;
+    domNode.current.style.color=colors[ref.current%5];
 }
