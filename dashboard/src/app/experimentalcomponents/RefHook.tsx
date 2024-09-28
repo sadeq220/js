@@ -1,6 +1,6 @@
 'use client'
 
-import {useRef} from "react";
+import {MutableRefObject, useRef} from "react";
 
 const colors = ["red","green","blue","purple","yellow"];
 
@@ -11,8 +11,8 @@ const colors = ["red","green","blue","purple","yellow"];
  * @constructor
  */
 export default function RefHook() {
-    const ref = useRef(0);
-    const domNode = useRef(null);//access to the DOM elements managed by React
+    const ref = useRef<number>(0);
+    const domNode = useRef<HTMLHeadingElement>(null);//access to the DOM elements managed by React
 
     return (
         <>
@@ -22,7 +22,7 @@ export default function RefHook() {
         </>
     );
 }
-function handleClick(ref,domNode){
+function handleClick(ref:MutableRefObject<number>,domNode:MutableRefObject<HTMLHeadingElement>){
     ref.current +=1;
     domNode.current.style.color=colors[ref.current%5];
 }
