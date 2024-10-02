@@ -33,7 +33,7 @@ export default function UserTable() {
             queryKey: ['userInfo'],
             queryFn: () => fetch("http://localhost/mock/user-info.json").then(res => res.json())
         });
-    let tempData = data ? data : [] ;
+    const tempData = data ? data : [] ;
     const [selectedUsers, setSelectedUsers] = useState<string[]>([])
     const [currentPage, setCurrentPage] = useState(1)
     const [itemsPerPage, setItemsPerPage] = useState(3)
