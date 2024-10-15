@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import ServerClientQueryClientProvider from '@/provider/ServerClientQueryClientProvider';
+import ShadcnThemeProvider from '@/provider/ShadCnThemeProvider';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,11 +27,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+
     <ServerClientQueryClientProvider>
+
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased mr-4 ml-4`}
       >
+      <ShadcnThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange>
         {children}
+      </ShadcnThemeProvider>
       </body>
     </ServerClientQueryClientProvider>
     </html>

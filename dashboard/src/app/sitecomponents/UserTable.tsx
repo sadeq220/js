@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 import {useQuery, useQueryClient} from "@tanstack/react-query";
 import {useState} from "react";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 
 interface UserInfo{
     id:string;
@@ -111,22 +112,22 @@ export default function UserTable() {
                         </Select>
                     </div>
                     <div className="flex items-center space-x-2">
-                        <Button
+                        <RainbowButton
                             variant="outline"
                             size="icon"
                             onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                             disabled={currentPage === 1}
                         >
                             <ChevronLeftIcon className="h-4 w-4"/>
-                        </Button>
-                        <Button
+                        </RainbowButton>
+                        <RainbowButton
                             variant="outline"
                             size="icon"
                             onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                             disabled={currentPage === totalPages}
                         >
                             <ChevronRightIcon className="h-4 w-4"/>
-                        </Button>
+                        </RainbowButton>
                     </div>
                 </div>
             </div>
